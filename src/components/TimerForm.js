@@ -15,6 +15,8 @@ class TimerForm extends Component {
     const { title, project } = this.state;
     if (this.props.id) {
       // on veut modifier
+      const id = this.props.id;
+      this.props.onFormSubmit({ id, title, project });
     } else {
       // on veut crée
       this.props.onFormSubmit({ title, project });

@@ -35,11 +35,72 @@ class Box extends Component {
       timers: [...this.state.timers, timer],
     });
   };
+  handleEditTimer = ({ id, title, project }) => {
+    this.setState({
+      timers: this.state.timers.map((timer) => {
+        if (timer.id === id) {
+          return {
+            ...timer,
+            title,
+            project,
+          };
+        }
+        return { ...timer };
+      }),
+    });
+  };
+  handleDelete = (id) => {
+    this.setState({
+      timers: this.state.timers.filter((timer) => timer.id !== id),
+    });
+  };
+  handlePlay = (id) => {
+    const now = Date.now();
+    this.setState({
+      timers: this.state.timers.map((timer) => {
+        if (id === timer.id) {
+          return {
+            ...timer,
+            runningSince: now,
+          };
+        } else {
+          return {
+            ...timer,
+          };
+        }
+      }),
+    });
+  };
+  handlePause = (id) => {
+    const now = Date.now();
+    this.setState({
+      timers: this.state.timers.map((timer) => {
+        if (id === timer.id) {
+          const nexElapsed = now - timer.runningSince;
+          return {
+            ...timer,
+            runningSince: null,
+            elapsed: timer.elapsed + nexElapsed,
+          };
+        } else {
+          return {
+            ...timer,
+          };
+        }
+      }),
+    });
+  };
   render() {
     return (
       <div className="boxed--view">
         <div className="boxed--view_box">
-          <ListContainer timers={this.state.timers} />
+          <ListContainer
+            onFormSubmit={this.handleEditTimer}
+            onDelete={this.handleDelete}
+            timers={this.state.timers}
+            onPlay={this.handlePlay}
+            onPause={this.handlePause}
+          />
           <ActionContainer onFormSubmit={this.handleCreateTimer} />
         </div>
       </div>
