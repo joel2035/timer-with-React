@@ -9,6 +9,13 @@ class Container extends Component {
   handleEditFormOpen = () => {
     this.setState({ isFormOpen: true });
   };
+  handleEditClose = () => {
+    this.setState({ isFormOpen: false });
+  };
+  onFormSubmit = ({ id, title, project }) => {
+    this.handleEditClose();
+    this.props.onFormSubmit({ id, title, project });
+  };
   render() {
     return (
       <div className="list--container">
@@ -17,7 +24,8 @@ class Container extends Component {
             title={this.props.title}
             project={this.props.project}
             id={this.props.id}
-            onFormSubmit={this.props.onFormSubmit}
+            onFormSubmit={this.onFormSubmit}
+            onCloseForm={this.handleEditClose}
           />
         ) : (
           <Timer
