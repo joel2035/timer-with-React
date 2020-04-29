@@ -199,7 +199,7 @@ span {
   border-bottom-right-radius: 0rem;
   color: #49f557;
   background: white;
-  border-color: rgb(207, 151, 61);
+  border-color: rgb(61, 207, 151);
   transition: color 0.3s ease-in, background 0.3s ease-in,
     border-color 0.3s ease-in;
 }
@@ -207,7 +207,7 @@ span {
 .btn--submit:active {
   color: white;
   background: #49f557;
-  border-color: rgb(207, 151, 61);
+  border-color: rgb(61, 207, 151);
 }
 .list--container {
   display: flex;

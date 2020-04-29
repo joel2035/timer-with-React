@@ -10,7 +10,11 @@ class Container extends Component {
     return (
       <div className="list--container">
         {this.state.isFormOpen ? (
-          <TimerForm title={this.props.title} project={this.props.project} />
+          <TimerForm
+            title={this.props.title}
+            project={this.props.project}
+            id={this.props.id}
+          />
         ) : (
           <Timer
             title={this.props.title}

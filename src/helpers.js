@@ -1,19 +1,19 @@
-import uuid from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
-window.helpers = (function() {
+window.helpers = (function () {
   function newTimer(attrs = {}) {
     const timer = {
       title: attrs.title || "Timer",
       project: attrs.project || "Project",
-      id: uuid.v4(), // eslint-disable-line no-undef
-      elapsed: 0
+      id: uuidv4(), // eslint-disable-line no-undef
+      elapsed: 0,
     };
 
     return timer;
   }
 
   function findById(array, id, cb) {
-    array.forEach(el => {
+    array.forEach((el) => {
       if (el.id === id) {
         cb(el);
         return;
@@ -39,7 +39,7 @@ window.helpers = (function() {
     const humanized = [
       pad(hours.toString(), 2),
       pad(minutes.toString(), 2),
-      pad(seconds.toString(), 2)
+      pad(seconds.toString(), 2),
     ].join(":");
 
     return humanized;
@@ -55,6 +55,6 @@ window.helpers = (function() {
     millisecondsToHuman,
     newTimer,
     findById,
-    renderElapsedString
+    renderElapsedString,
   };
 })();

@@ -4,7 +4,9 @@ class Box extends Component {
   render() {
     return (
       <div>
-        <button className="button__outline">+</button>
+        <button className="button__outline" onClick={this.props.handleFormOpen}>
+          +
+        </button>
       </div>
     );
   }
